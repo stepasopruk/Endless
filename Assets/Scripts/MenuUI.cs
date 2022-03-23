@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System;
+using System.Collections;
 
 public class MenuUI : MonoBehaviour
 {
@@ -26,10 +28,29 @@ public class MenuUI : MonoBehaviour
         Debug.Log("Выход из игры");
     }
 
-    public void ButtonMenu()
+    [SerializeField] GameObject panel;
+    public void LoadScene(int id)
     {
-        Debug.Log("Выход в меню");
+        StartCoroutine(WaitToTransitionCoroutine(panel));
+        SceneManager.LoadScene(id);
     }
+
+    IEnumerator WaitToTransitionCoroutine(GameObject obj)
+    {
+        yield return new WaitForSeconds(1f);
+        Color panel;
+        panel = GetComponent<Image>().color;
+
+        while (panel.a < 255f)
+        {
+            Debug.Log(panel.a);
+            panel.a++;
+            StartCoroutine(WaitToTransitionCoroutine(obj));
+        }
+        
+
+    }
+
     public void ButtonReload()
     {
         Debug.Log("перезагрузка");

@@ -7,6 +7,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] Score score;
     [SerializeField] Text scoreTextLoss;
 
+    private void Start()
+    {
+        Time.timeScale = 1;
+    }
+
     public void End()
     {
         Time.timeScale = 0;
