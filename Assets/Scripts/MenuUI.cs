@@ -28,28 +28,13 @@ public class MenuUI : MonoBehaviour
         Debug.Log("Выход из игры");
     }
 
-    [SerializeField] GameObject panel;
     public void LoadScene(int id)
     {
-        StartCoroutine(WaitToTransitionCoroutine(panel));
         SceneManager.LoadScene(id);
     }
 
-    IEnumerator WaitToTransitionCoroutine(GameObject obj)
-    {
-        yield return new WaitForSeconds(1f);
-        Color panel;
-        panel = GetComponent<Image>().color;
 
-        while (panel.a < 255f)
-        {
-            Debug.Log(panel.a);
-            panel.a++;
-            StartCoroutine(WaitToTransitionCoroutine(obj));
-        }
-        
 
-    }
 
     public void ButtonReload()
     {

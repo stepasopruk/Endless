@@ -233,7 +233,6 @@ GameObject:
   - component: {fileID: 46882130}
   - component: {fileID: 46882129}
   - component: {fileID: 46882128}
-  - component: {fileID: 46882127}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -241,20 +240,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &46882127
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 46882126}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!23 &46882128
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1138,6 +1123,7 @@ GameObject:
   m_Component:
   - component: {fileID: 246006639}
   - component: {fileID: 246006640}
+  - component: {fileID: 246006641}
   m_Layer: 5
   m_Name: ShopUI
   m_TagString: Untagged
@@ -1175,6 +1161,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 246006638}
   m_CullTransparentMesh: 0
+--- !u!114 &246006641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246006638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6341c34a9a1570e4eb78a0b6f2c108f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  materialArray:
+  - {fileID: 2100000, guid: f90ba949f5d4d60479c03be7a9eea1fd, type: 2}
+  - {fileID: 2100000, guid: 50f90796a1082b647b3c607d70612b06, type: 2}
+  - {fileID: 2100000, guid: d9159574cc8a71c418dfa6c3b705b1d2, type: 2}
+  - {fileID: 2100000, guid: 6c120017910775a428062693115f07e4, type: 2}
+  - {fileID: 2100000, guid: 60d4c7f932e258341bada98b9c9e1002, type: 2}
+  player: {fileID: 249337987}
+--- !u!1 &249337987 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5008120065369920978, guid: b174439f2ccc31f48ab45de5d159d796, type: 3}
+  m_PrefabInstance: {fileID: 1676298336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &249337991
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249337987}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4089a7f7a111c834ea89f8aaef310c60, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &262643850 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5008120065369920978, guid: b174439f2ccc31f48ab45de5d159d796, type: 3}
@@ -3051,7 +3080,6 @@ MonoBehaviour:
   panel_score: {fileID: 814132566}
   button_score: {fileID: 108775332}
   camera: {fileID: 963194227}
-  panel: {fileID: 1891673043}
 --- !u!1 &965385184
 GameObject:
   m_ObjectHideFlags: 0
@@ -4220,7 +4248,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1562544147}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 246006641}
+        m_TargetAssemblyTypeName: ShopUIHelper, Assembly-CSharp
+        m_MethodName: NextArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1562544147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4410,10 +4450,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2839497070574980694, guid: b174439f2ccc31f48ab45de5d159d796, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839497070574980694, guid: b174439f2ccc31f48ab45de5d159d796, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2839497070574980694, guid: b174439f2ccc31f48ab45de5d159d796, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5008120065369920978, guid: b174439f2ccc31f48ab45de5d159d796, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7765554108573688376, guid: b174439f2ccc31f48ab45de5d159d796, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50f90796a1082b647b3c607d70612b06, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b174439f2ccc31f48ab45de5d159d796, type: 3}
 --- !u!1 &1740617240
@@ -4628,7 +4684,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1811449828}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 246006641}
+        m_TargetAssemblyTypeName: ShopUIHelper, Assembly-CSharp
+        m_MethodName: PrevArrow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1811449828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4702,6 +4770,7 @@ GameObject:
   - component: {fileID: 1891673044}
   - component: {fileID: 1891673046}
   - component: {fileID: 1891673045}
+  - component: {fileID: 1891673047}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -4718,7 +4787,7 @@ RectTransform:
   m_GameObject: {fileID: 1891673043}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.09, y: 1.09, z: 1.09}
   m_Children: []
   m_Father: {fileID: 43090218}
   m_RootOrder: 0
@@ -4766,6 +4835,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891673043}
   m_CullTransparentMesh: 0
+--- !u!95 &1891673047
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891673043}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c995f9c3f9bfd3049a0cd68d90abe9ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1961286317
 GameObject:
   m_ObjectHideFlags: 0

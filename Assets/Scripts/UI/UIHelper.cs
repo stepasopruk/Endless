@@ -14,15 +14,16 @@ public class UIHelper : MonoBehaviour
     [SerializeField] GameObject panel_score;
     [SerializeField] GameObject button_score;
 
-    Animator anim;
+    Animator animCam;
+    //Animator animPanel;
 
     [SerializeField] Camera camera;
     private void Start()
     {
         Time.timeScale = 1;
-        anim = camera.GetComponent<Animator>();
+        animCam = camera.GetComponent<Animator>();
 
-
+        //animPanel = panel.GetComponent<Animator>();
     }
     public void Exit()
     {
@@ -34,7 +35,7 @@ public class UIHelper : MonoBehaviour
     public void Setting()
     {
         StartCoroutine(WaitToActiveCoroutine(button_setting, panel_setting));
-        anim.SetBool("TransitionSetting", true);
+        animCam.SetBool("TransitionSetting", true);
 
     }
 
@@ -42,21 +43,21 @@ public class UIHelper : MonoBehaviour
     {
         StartCoroutine(WaitToActiveCoroutine(button_score, panel_score));
 
-        anim.SetBool("TransitionBestScore", true);
+        animCam.SetBool("TransitionBestScore", true);
     }
 
     public void BackButtonSetting()
     {
         StartCoroutine(WaitToActiveCoroutine(panel_setting, button_setting));
 
-        anim.SetBool("TransitionSetting", false);
+        animCam.SetBool("TransitionSetting", false);
     }
 
     public void BackButtonScore()
     {
         StartCoroutine(WaitToActiveCoroutine(panel_score, button_score));
 
-        anim.SetBool("TransitionBestScore", false);
+        animCam.SetBool("TransitionBestScore", false);
     }
 
     IEnumerator WaitToActiveCoroutine(GameObject obj1, GameObject obj2)
@@ -68,27 +69,38 @@ public class UIHelper : MonoBehaviour
 
     }
 
-    [SerializeField] GameObject panel;
+
+    //[SerializeField] GameObject panel;
+    //public void LoadScene(int id)
+    //{
+    //    StartCoroutine(WaitToTransitionCoroutine(panel, id));  
+    //}
+
+    //Color newcolor = new Color(0f, 0f, 0f, 0f);
+
+
+    //IEnumerator WaitToTransitionCoroutine(GameObject obj, int id)
+    //{
+
+    //    yield return new WaitForSeconds(0.005f);
+
+    //    obj.GetComponent<Image>().color = newcolor;
+
+    //    if (newcolor.a < 1f)
+    //    {
+    //        newcolor.a+= 0.02f;
+    //        Debug.Log(newcolor);
+    //        StartCoroutine(WaitToTransitionCoroutine(obj, id));
+    //    }else if(newcolor.a >= 1f)
+    //    {
+    //        SceneManager.LoadScene(id);
+    //    }
+
+    //}
+
     public void LoadScene(int id)
     {
-        StartCoroutine(WaitToTransitionCoroutine(panel));
-        //SceneManager.LoadScene(id);
-    }
-
-    IEnumerator WaitToTransitionCoroutine(GameObject obj)
-    {
-        yield return new WaitForSeconds(1f);
-        Color panel;
-        panel = GetComponent<Image>().color;
-
-        while (panel.a < 255f)
-        {
-            Debug.Log(panel.a);
-            panel.a++;
-            StartCoroutine(WaitToTransitionCoroutine(obj));
-        }
-
-
+        SceneManager.LoadScene(id);
     }
 
 }
