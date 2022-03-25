@@ -1,24 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopUIHelper : MonoBehaviour
 {
 
     [SerializeField] Material[] materialArray;
+    [SerializeField] int[] PriceArray;
+    int currentMoney;
+
+    [SerializeField] Text textPrice;
 
     [SerializeField] GameObject player;
-    Material playerMaterial;
 
     Animator anim;
 
 
     private void Start()
     {
-        playerMaterial = player.GetComponent<Material>();
-        Debug.Log(playerMaterial);
         anim = player.GetComponent<Animator>();
         player.GetComponent<Renderer>().material = materialArray[index];
+        textPrice.text = PriceArray[index].ToString();
     }
 
     int index = 0;
@@ -49,8 +52,8 @@ public class ShopUIHelper : MonoBehaviour
     IEnumerator ChangePlayer(int i)
     {
         yield return new WaitForSeconds(0.5f);
-        Debug.Log("ChangePlayer");
         player.GetComponent<Renderer>().material = materialArray[i];
+        textPrice.text = PriceArray[index].ToString();
         anim.SetBool("newMaterial", false);
 
     }

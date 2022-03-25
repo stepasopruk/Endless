@@ -63,10 +63,10 @@
     <Compile Include="Assets\Scripts\RandomObjRoad.cs" />
     <Compile Include="Assets\Scripts\SwipeDetection.cs" />
     <Compile Include="Assets\Scripts\ButtonUI.cs" />
+    <Compile Include="Assets\Scripts\UI\ShopUIHelper.cs" />
     <Compile Include="Assets\Scripts\CamMove.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UI\UIHelper.cs" />
-    <Compile Include="Assets\Scripts\UI\ShopUIHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
