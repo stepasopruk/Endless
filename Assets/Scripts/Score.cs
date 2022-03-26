@@ -3,10 +3,13 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] Text scoreText;
+
+    [SerializeField] Text _scoreText;
+    [SerializeField] Text _bestscoreText;
     public float _score = 0;
-    float speedScore;
-    
+    float _speedScore;
+    public float _bestScore;
+
     [Header("Множитель скорости очков")]
     [SerializeField] float multiplierSpeedScore = 5f;
 
@@ -17,104 +20,114 @@ public class Score : MonoBehaviour
 
     private void Start()
     {
-        speedScore = run_generation.speedRoad;
+        _speedScore = run_generation.speedRoad;
+        _bestScore = Setting.bestScoreValue;
     }
 
     private void FixedUpdate()
     {
-        _score = _score + speedScore * multiplierSpeedScore * Time.deltaTime;
-        scoreText.text = "Score: " + ((int)(_score / 2)).ToString();
+        _score = _score + _speedScore * multiplierSpeedScore * Time.deltaTime;
 
-        if (((int)(_score / 2)) == 50f)
+        float valueScore = ((int)(_score / 2));
+
+        if (_bestScore <= valueScore)
+            _bestScore = valueScore;
+        _bestscoreText.text = _bestScore.ToString();
+
+        
+        _scoreText.text = valueScore.ToString();
+
+
+        if (valueScore == 50f)
         {
             run_generation.StateGeneration = true;
         }
 
-        if (((int)(_score / 2)) >= 100f && ((int)(_score / 2)) <= 119f)
+        if (valueScore >= 100f && valueScore <= 119f)
         {
             run_generation.speedRoad = 6f;
             run_generation1.speedRoad = 6f;
         }
 
-        if (((int)(_score / 2)) >= 120f && ((int)(_score / 2)) <= 139f)
+        if (valueScore >= 120f && valueScore <= 139f)
         {
             run_generation.speedRoad = 7f;
             run_generation1.speedRoad = 7f;
         }
 
-        if (((int)(_score / 2)) >= 140f && ((int)(_score / 2)) <= 159f)
+        if (valueScore >= 140f && valueScore <= 159f)
         {
             run_generation.speedRoad = 8f;
             run_generation1.speedRoad = 8f;
         }
 
-        if (((int)(_score / 2)) >= 160f && ((int)(_score / 2)) <= 179f)
+        if (valueScore >= 160f && valueScore <= 179f)
         {
             run_generation.speedRoad = 9f; 
             run_generation1.speedRoad = 9f;
         }
 
-        if (((int)(_score / 2)) >= 180f && ((int)(_score / 2)) <= 199f)
+        if (valueScore >= 180f && valueScore <= 199f)
         {
             run_generation.speedRoad = 10f;
             run_generation1.speedRoad = 10f;
         }
 
-        if (((int)(_score / 2)) >= 200f && ((int)(_score / 2)) <= 219f)
+        if (valueScore >= 200f && valueScore <= 219f)
         {
             run_generation.speedRoad = 11f;
             run_generation1.speedRoad = 11f;
         }
 
-        if (((int)(_score / 2)) >= 220 && ((int)(_score / 2)) <= 239f)
+        if (valueScore >= 220 && valueScore <= 239f)
         {
             run_generation.speedRoad = 12f;
             run_generation1.speedRoad = 12f;
         }
 
-        if (((int)(_score / 2)) >= 240 && ((int)(_score / 2)) <= 259f)
+        if (valueScore >= 240 && valueScore <= 259f)
         {
             run_generation.speedRoad = 13f;
             run_generation1.speedRoad = 13f;
         }
 
-        if (((int)(_score / 2)) >= 260f && ((int)(_score / 2)) <= 279f)
+        if (valueScore >= 260f && valueScore <= 279f)
         {
             run_generation.speedRoad = 14f;
             run_generation1.speedRoad = 14f;
         }
 
-        if (((int)(_score / 2)) >= 280f && ((int)(_score / 2)) <= 299f)
+        if (valueScore >= 280f && valueScore <= 299f)
         {
             run_generation.speedRoad = 15f;
             run_generation1.speedRoad = 15f;
         }
 
-        if (((int)(_score / 2)) >= 300f && ((int)(_score / 2)) <= 319f)
+        if (valueScore >= 300f && valueScore <= 319f)
         {
             run_generation.speedRoad = 16f;
             run_generation1.speedRoad = 16f;
         }
 
-        if (((int)(_score / 2)) >= 320f && ((int)(_score / 2)) <= 339f)
+        if (valueScore >= 320f && valueScore <= 339f)
         {
             run_generation.speedRoad = 17f;
             run_generation1.speedRoad = 17f;
         }
 
-        if (((int)(_score / 2)) >= 340f && ((int)(_score / 2)) <= 359f)
+        if (valueScore >= 340f && valueScore <= 359f)
         {
             run_generation.speedRoad = 18f;
             run_generation1.speedRoad = 18f;
         }
 
-        if (((int)(_score / 2)) >= 360f && ((int)(_score / 2)) <= 379f)
+        if (valueScore >= 360f && valueScore <= 379f)
         {
             run_generation.speedRoad = 19f;
             run_generation1.speedRoad = 19f;
         }
 
-        if (((int)(_score / 2)) == 380f)
+        if (valueScore == 380f)
         {
             run_generation.speedRoad = 20f;
             run_generation1.speedRoad = 20f;

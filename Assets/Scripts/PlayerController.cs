@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
     float laneOffset = 1f;
     float laneChangeSpeed = 15;
 
+    [SerializeField] CoinHelper coin;
+
 
     void Start()
     {
         targetPos = transform.position;
         SwipeDetection.instance.MoveEvent += MovePlayer;
+
     }
 
     void MovePlayer(bool[] swipes)
@@ -26,18 +29,25 @@ public class PlayerController : MonoBehaviour
         {
             targetPos = new Vector3(targetPos.x + laneOffset, transform.position.y, transform.position.z);
         }
-        
+
     }
 
     private void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, laneChangeSpeed * Time.deltaTime);
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Конец игры");
-        endGame.End();
+        if (other.GetComponent<CoinHelper>())
+        {
+            coin.Enrol();
+        }
+        else
+        {
+            Debug.Log("Конец игры");
+            endGame.End();
+        }
     }
 
 }
