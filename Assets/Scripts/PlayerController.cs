@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
     float laneOffset = 1f;
     float laneChangeSpeed = 15;
 
-    [SerializeField] CoinHelper coin;
-
 
     void Start()
     {
@@ -41,7 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.GetComponent<CoinHelper>())
         {
-            coin.Enrol();
+            other.GetComponent<CoinHelper>().Enrol();
         }
         else
         {

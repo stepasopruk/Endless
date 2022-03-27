@@ -45,7 +45,7 @@ public class RunGeneration : MonoBehaviour
         {
             if (currentRoadLenght != maximumRoadLenght)//текущая длина дороги объектов не равна максимальной длины дороги объектов
             {
-                currentRoadNumder = Random.RandomRange(0, Road.Length);// рандомно выбираем номер объекта от 0 до длины массива объектов
+                currentRoadNumder = Random.Range(0, Road.Length);// рандомно выбираем номер объекта от 0 до длины массива объектов
 
                 if (currentRoadNumder != LastRoadNumder)//если текущий номер объекта не равен последнему номеру объекта
                 {

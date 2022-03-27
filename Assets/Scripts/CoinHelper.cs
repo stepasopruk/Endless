@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CoinHelper : MonoBehaviour
 {
-    int money = 0;
+    static int money;
     void Start()
     {
 
@@ -21,9 +21,12 @@ public class CoinHelper : MonoBehaviour
     {
         money++;
         Setting.moneyValue = money;
-        Debug.Log("Setting.moneyValue " + Setting.moneyValue);
-        Debug.Log("money " + money);
+
+        //gameObject.GetComponent<MeshRenderer>().enabled = false;
+        Destroy(gameObject);
+
     }
 
- 
+
+
 }

@@ -33,7 +33,7 @@ public class RandomObjRoad : MonoBehaviour
     {
         pos = transform.position;
 
-       
+
     }
     GameObject rnd1;
     GameObject rnd2;
@@ -43,7 +43,7 @@ public class RandomObjRoad : MonoBehaviour
     void FixedUpdate()
     {
 
-        
+
 
         if (stateRandom)
         {
@@ -83,19 +83,23 @@ public class RandomObjRoad : MonoBehaviour
         }
     }
 
+
+    [SerializeField] GameObject coinPrefab;
+
     private void RandomObj()
     {
-        if (objNumderC == objNumderL && objNumderC == objNumderR )
+        if (objNumderC == objNumderL && objNumderC == objNumderR)
         {
-            objNumderL = Random.RandomRange(0, numderRandom);
-            objNumderC = Random.RandomRange(0, numderRandom);
-            objNumderR = Random.RandomRange(0, numderRandom);
+            objNumderL = Random.Range(0, numderRandom);
+            objNumderC = Random.Range(0, numderRandom);
+            objNumderR = Random.Range(0, numderRandom);
         }
-         else
+        else
         {
             rnd1 = Instantiate(Obj[objNumderL], pos - new Vector3(1f, 0f, 0f), Quaternion.identity);
             rnd2 = Instantiate(Obj[objNumderC], pos, Quaternion.identity);
             rnd3 = Instantiate(Obj[objNumderR], pos + new Vector3(1f, 0f, 0f), Quaternion.identity);
+            InstantiateCoin();
             rnd1.SetActive(true);
             rnd2.SetActive(true);
             rnd3.SetActive(true);
@@ -106,6 +110,32 @@ public class RandomObjRoad : MonoBehaviour
         }
     }
 
+    Vector3 RandomPosCoin = new Vector3(0, 0, 0);
+
+    private void InstantiateCoin()
+    {
+        RandomPosCoin = pos + new Vector3(Random.Range((int)rnd1.transform.position.x, (int)rnd3.transform.position.x), 0, 0);
+        if (CheckParentCoin(RandomPosCoin))
+        {
+            GameObject coin = Instantiate(coinPrefab, RandomPosCoin, Quaternion.identity);
+            coin.transform.SetParent(rnd2.transform, true);
+        }
+    }
+
+    bool CheckParentCoin(Vector3 PosCoin)
+    {
+        if (PosCoin == rnd1.transform.position && objNumderL != 0)
+            return true;
+        else
+        if (PosCoin == rnd2.transform.position && objNumderC != 0)
+            return true;
+        else
+        if (PosCoin == rnd3.transform.position && objNumderR != 0)
+            return true;
+        else
+            return false;
+
+    }
     private void RemoveRandomObj()
     {
         if (check && !stateRandom)
@@ -135,7 +165,7 @@ public class RandomObjRoad : MonoBehaviour
         }
     }
 
-   [SerializeField] GameObject destr;
+    [SerializeField] GameObject destr;
 
 
     private void OnTriggerEnter(Collider other)
