@@ -13,7 +13,6 @@ public class ButtonUI : MonoBehaviour
     [SerializeField] Mesh meshParallelogram;
     [SerializeField] Mesh meshRhombus;
     [SerializeField] Mesh meshSquare;
-    [SerializeField] Mesh meshStar;
     [SerializeField] Mesh meshTrapezoid;
     [SerializeField] Mesh meshTriangle;
 
@@ -46,11 +45,7 @@ public class ButtonUI : MonoBehaviour
             button[5].GetComponent<Button>().enabled = true;
             button[5].GetComponent<Image>().color = new Color(255, 255, 255, 255);
         }
-        if (((int)score._score / 2) == 1800f)
-        {
-            button[6].GetComponent<Button>().enabled = true;
-            button[6].GetComponent<Image>().color = new Color(255, 255, 255, 255);
-        }
+
     }
 
     public void HexagonButton()
@@ -72,11 +67,6 @@ public class ButtonUI : MonoBehaviour
     {
         player.GetComponent<MeshFilter>().mesh = meshSquare;
         meshColliderPlayer.sharedMesh = meshSquare;
-    }
-    public void StarButton()
-    {
-        player.GetComponent<MeshFilter>().mesh = meshStar;
-        meshColliderPlayer.sharedMesh = meshStar;
     }
     public void TrapezoidButton()
     {

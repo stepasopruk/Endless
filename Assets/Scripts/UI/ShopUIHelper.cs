@@ -25,36 +25,37 @@ public class ShopUIHelper : MonoBehaviour
     }
 
     int index = 0;
-    public void NextArrow()
+    public void NextArrow(GameObject panel)
     {
         if (index == materialArray.Length-1)
             index = 0;
         else
             index++;
-
+        
+        panel.GetComponent<Image>().raycastTarget = true;
         anim.SetBool("newMaterial", true);
-        StartCoroutine(ChangePlayer(index));
+        StartCoroutine(ChangePlayer(index, panel));
     }
 
-    public void PrevArrow()
+    public void PrevArrow(GameObject panel)
     {
         if (index == 0)
             index = materialArray.Length-1;
         else
             index--;
-        
+        panel.GetComponent<Image>().raycastTarget = true;
         anim.SetBool("newMaterial", true);
-
-        StartCoroutine(ChangePlayer(index));
+        StartCoroutine(ChangePlayer(index, panel));
     }
 
 
-    IEnumerator ChangePlayer(int i)
+    IEnumerator ChangePlayer(int i, GameObject pnl)
     {
         yield return new WaitForSeconds(0.5f);
         player.GetComponent<Renderer>().material = materialArray[i];
         textPrice.text = PriceArray[index].ToString();
         anim.SetBool("newMaterial", false);
+        pnl.GetComponent<Image>().raycastTarget = false;
 
     }
 }

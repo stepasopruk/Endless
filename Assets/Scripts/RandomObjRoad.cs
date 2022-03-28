@@ -54,33 +54,18 @@ public class RandomObjRoad : MonoBehaviour
         MoveRandomObj();
         RemoveRandomObj();
     }
-
+    float valueScore;
+    float range = 300f;
     void RangeRandom()
     {
-        if (((int)score._score / 2) >= 300f && ((int)score._score / 2) <= 599f)
+        valueScore = (int)score._score / 2;
+
+        if (valueScore >= range && numderRandom < 7)
         {
-            numderRandom = 3;
+            numderRandom++;
+            range += 300f;
         }
-        if (((int)score._score / 2) >= 600f && ((int)score._score / 2) <= 899f)
-        {
-            numderRandom = 4;
-        }
-        if (((int)score._score / 2) >= 900f && ((int)score._score / 2) <= 1199f)
-        {
-            numderRandom = 5;
-        }
-        if (((int)score._score / 2) >= 1200f && ((int)score._score / 2) <= 1499f)
-        {
-            numderRandom = 6;
-        }
-        if (((int)score._score / 2) >= 1500f && ((int)score._score / 2) <= 1799f)
-        {
-            numderRandom = 7;
-        }
-        if (((int)score._score / 2) >= 1800f)
-        {
-            numderRandom = 8;
-        }
+
     }
 
 
