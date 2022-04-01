@@ -34,7 +34,7 @@ public class Score : MonoBehaviour
         if (_bestScore <= valueScore)
             _bestScore = valueScore;
         _bestscoreText.text = _bestScore.ToString();
-
+        Setting.bestScoreValue = _bestScore;
         _scoreText.text = valueScore.ToString();
 
         SpeedRoadController();

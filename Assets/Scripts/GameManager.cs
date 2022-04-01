@@ -7,9 +7,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] Score score;
     [SerializeField] Text scoreTextLoss;
 
+    private PlayerController _playerController;
+
     private void Start()
     {
         Time.timeScale = 1;
+        _playerController = FindObjectOfType<PlayerController>();
+        _playerController.GetComponent<Renderer>().material = Setting.PlayerMaterial;
     }
 
     public void End()
