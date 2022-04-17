@@ -6,63 +6,65 @@ using UnityEngine.UI;
 public class ShopUIHelper : MonoBehaviour
 {
 
-    [SerializeField] Material[] materialArray;
+    [SerializeField] private Material[] materialArray;
     [SerializeField] int[] PriceArray;
     [SerializeField] private bool[] CheckIsBuySkinPlayer;
-    int currentMoney;
-
+    private int index;
+    private bool _isActiveCoroutine;
     [SerializeField] Text textPrice;
 
     [SerializeField] GameObject player;
 
     Animator anim;
 
-
-    private void Start()
+    private void Awake()
     {
         index = Setting.indexPlayerMaterial;
-        Debug.Log("Setting.indexPlayerMaterial " + Setting.indexPlayerMaterial);
-        Debug.Log("index " + index);
         anim = player.GetComponent<Animator>();
         player.GetComponent<Renderer>().material = materialArray[index];
         textPrice.text = PriceArray[index].ToString();
+        Setting.PlayerMaterial = materialArray[0];
+    }
 
-        Setting.PlayerMaterial = player.GetComponent<Renderer>().material;
-        Debug.Log(Setting.BoughtMaterialsPlayer);
-
-
+    private void Start()
+    {
         for (int i = 0; i < materialArray.Length; i++)
         {
             for (int j = 0; j < Setting.BoughtMaterialsPlayer.Count; j++)
             {
-                if (materialArray[i] = Setting.BoughtMaterialsPlayer[j])
+                if (materialArray[i] == Setting.BoughtMaterialsPlayer[j])
                 {
                     CheckIsBuySkinPlayer[i] = true;
-                    textPrice.text = " Sold ";
                 }
             }
         }
-
     }
 
     private void Update()
     {
-        if (CheckIsBuySkinPlayer[index])
+        if (CheckIsBuySkinPlayer[index] && !_isActiveCoroutine)
+        {
             Setting.PlayerMaterial = player.GetComponent<Renderer>().material;
-        
+            textPrice.text = " Sold ";
+            
+        }
+        else
+            textPrice.text = PriceArray[index].ToString();
 
         Setting.indexPlayerMaterial = index;
+
+        Debug.Log("PlayerMaterial " + Setting.PlayerMaterial);
     }
 
-    private int index;
+
     public void NextArrow(GameObject panel)
     {
         if (index == materialArray.Length - 1)
             index = 0;
         else
             index++;
-        Debug.Log("index " + index);
 
+        _isActiveCoroutine = true;
         panel.GetComponent<Image>().raycastTarget = true;
         anim.SetBool("newMaterial", true);
         StartCoroutine(ChangePlayer(index, panel));
@@ -74,8 +76,8 @@ public class ShopUIHelper : MonoBehaviour
             index = materialArray.Length - 1;
         else
             index--;
-        Debug.Log("index " + index);
 
+        _isActiveCoroutine = true;
         panel.GetComponent<Image>().raycastTarget = true;
         anim.SetBool("newMaterial", true);
         StartCoroutine(ChangePlayer(index, panel));
@@ -86,7 +88,7 @@ public class ShopUIHelper : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         player.GetComponent<Renderer>().material = materialArray[i];
-        
+
         textPrice.color = Color.black;
 
         if (!CheckIsBuySkinPlayer[index])
@@ -97,15 +99,15 @@ public class ShopUIHelper : MonoBehaviour
         anim.SetBool("newMaterial", false);
         pnl.GetComponent<Image>().raycastTarget = false;
 
+        _isActiveCoroutine = false;
+
     }
 
     public void BuySkinPlayer()
     {
         if (CheckIsBuySkinPlayer[index])
-        {
-            Debug.Log("_isBuySkin " + CheckIsBuySkinPlayer[index]);
             return;
-        }
+
 
         //for(int i = 0; i < materialArray.Length; i++)
         //{
@@ -119,7 +121,6 @@ public class ShopUIHelper : MonoBehaviour
         if (Setting.moneyValue >= PriceArray[index])
         {
             Setting.moneyValue -= PriceArray[index];
-            Debug.Log("BuySkinPlayer() - Setting.moneyValue " + Setting.moneyValue);
             Setting.BoughtMaterialsPlayer.Add(materialArray[index]);
             CheckIsBuySkinPlayer[index] = true;
             textPrice.text = " Sold ";

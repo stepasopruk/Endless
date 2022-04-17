@@ -1183,12 +1183,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialArray:
   - {fileID: 2100000, guid: f90ba949f5d4d60479c03be7a9eea1fd, type: 2}
+  - {fileID: 2100000, guid: 6c120017910775a428062693115f07e4, type: 2}
   - {fileID: 2100000, guid: 50f90796a1082b647b3c607d70612b06, type: 2}
   - {fileID: 2100000, guid: d9159574cc8a71c418dfa6c3b705b1d2, type: 2}
-  - {fileID: 2100000, guid: 6c120017910775a428062693115f07e4, type: 2}
   - {fileID: 2100000, guid: 60d4c7f932e258341bada98b9c9e1002, type: 2}
   PriceArray: 0000000000000000000000000000000000000000
-  CheckIsBuySkinPlayer: 0000000000
+  CheckIsBuySkinPlayer: 0100000000
   textPrice: {fileID: 1366977534}
   player: {fileID: 249337987}
 --- !u!114 &246006642
