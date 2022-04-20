@@ -46,9 +46,9 @@ public class ShopUIHelper : MonoBehaviour
         {
             Setting.PlayerMaterial = player.GetComponent<Renderer>().material;
             textPrice.text = " Sold ";
-            
+            textPrice.color = new Color(0.728907f, 0.7825828f, 0.7924528f, 1f);
         }
-        else
+        else if(!_isActiveCoroutine)
             textPrice.text = PriceArray[index].ToString();
 
         Setting.indexPlayerMaterial = index;
@@ -65,6 +65,7 @@ public class ShopUIHelper : MonoBehaviour
             index++;
 
         _isActiveCoroutine = true;
+        textPrice.text = "";
         panel.GetComponent<Image>().raycastTarget = true;
         anim.SetBool("newMaterial", true);
         StartCoroutine(ChangePlayer(index, panel));
@@ -78,6 +79,7 @@ public class ShopUIHelper : MonoBehaviour
             index--;
 
         _isActiveCoroutine = true;
+        textPrice.text = "";
         panel.GetComponent<Image>().raycastTarget = true;
         anim.SetBool("newMaterial", true);
         StartCoroutine(ChangePlayer(index, panel));
@@ -89,12 +91,14 @@ public class ShopUIHelper : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         player.GetComponent<Renderer>().material = materialArray[i];
 
-        textPrice.color = Color.black;
+        textPrice.color = new Color(0.945098f, 0.7921569f, 0.2470588f, 1f);
 
         if (!CheckIsBuySkinPlayer[index])
             textPrice.text = PriceArray[index].ToString();
         else
+        {
             textPrice.text = " Sold ";
+        }
 
         anim.SetBool("newMaterial", false);
         pnl.GetComponent<Image>().raycastTarget = false;
@@ -127,7 +131,7 @@ public class ShopUIHelper : MonoBehaviour
         }
         else
         {
-            textPrice.color = Color.red;
+            textPrice.color = new Color(0.945098f, 0.3997653f, 0.2470588f, 1f);
         }
     }
 }

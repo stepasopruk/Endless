@@ -36,10 +36,10 @@ public class MenuUI : MonoBehaviour
 
 
 
-    public void ButtonReload()
+    public void ButtonReload(int id)
     {
         Debug.Log("перезагрузка");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(id);
         Time.timeScale = 1;
     }
     public void ButtonAdvertisement()

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public void End()
     {
         Time.timeScale = 0;
-        scoreTextLoss.text = "Ваш счет: " + ((int)(score._score / 2)).ToString();
+        scoreTextLoss.text = ((int)(score._score / 2)).ToString();
         Setting.bestScoreValue = score._bestScore;
         image_loss.SetActive(true);
     }
