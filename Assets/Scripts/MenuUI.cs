@@ -24,12 +24,15 @@ public class MenuUI : MonoBehaviour
 
     public void ButtonExit()
     {
+        PlayerPrefs.Save();
+
         Application.Quit();
         Debug.Log("Выход из игры");
     }
 
     public void LoadScene(int id)
     {
+        PlayerPrefs.Save();
         SceneManager.LoadScene(id);
     }
 

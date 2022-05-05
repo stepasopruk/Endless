@@ -17,33 +17,19 @@ public class ButtonUI : MonoBehaviour
     [SerializeField] Mesh meshTriangle;
 
 
-
+    float valueScore;
+    float range = 300f;
+    int index = 0;
     private void FixedUpdate()
     {
-        if(((int)score._score / 2) == 300f)
+        valueScore = (int)score._score / 2;
+
+        if (valueScore >= range && index < 6)
         {
-            button[1].GetComponent<Button>().enabled = true;
-            button[1].GetComponent<Image>().color = new Color(255,255,255,255);
-        }
-        if (((int)score._score / 2) == 600f)
-        {
-            button[2].GetComponent<Button>().enabled = true;
-            button[2].GetComponent<Image>().color = new Color(255, 255, 255, 255);
-        }
-        if (((int)score._score / 2) == 900f)
-        {
-            button[3].GetComponent<Button>().enabled = true;
-            button[3].GetComponent<Image>().color = new Color(255, 255, 255, 255);
-        }
-        if (((int)score._score / 2) == 1200f)
-        {
-            button[4].GetComponent<Button>().enabled = true;
-            button[4].GetComponent<Image>().color = new Color(255, 255, 255, 255);
-        }
-        if (((int)score._score / 2) == 1500f)
-        {
-            button[5].GetComponent<Button>().enabled = true;
-            button[5].GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            button[index].GetComponent<Button>().enabled = true;
+            button[index].GetComponent<Image>().color = new Color(255, 255, 255, 255);
+            index++;
+            range += 300f;
         }
 
     }

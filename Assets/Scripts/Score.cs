@@ -35,6 +35,7 @@ public class Score : MonoBehaviour
             _bestScore = valueScore;
         _bestscoreText.text = _bestScore.ToString();
         Setting.bestScoreValue = _bestScore;
+        PlayerPrefs.SetFloat("bestScoreValue", Setting.bestScoreValue);
         _scoreText.text = valueScore.ToString();
 
         SpeedRoadController();
@@ -55,7 +56,7 @@ public class Score : MonoBehaviour
             run_generation.speedRoad = valueSpeed;
             run_generation1.speedRoad = valueSpeed;
             valueSpeed++;
-            range = range + 200f;
+            range = range + 100f;
         }
     }
 }

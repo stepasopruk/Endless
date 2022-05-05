@@ -736,6 +736,6 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   platform: 13
   scenePathNames:
-  - Assets/Scenes/Main.unity
   - Assets/Scenes/MainMenu.unity
-  playerPath: C:/Users/user/Desktop/GameDiplom/Repository/Endless/Build/Build.apk
+  - Assets/Scenes/Main.unity
+  playerPath: C:/Users/user/Desktop/GameDiplom/Repository/Endless/Build/Endless.apk

@@ -55,7 +55,7 @@ public class RandomObjRoad : MonoBehaviour
         RemoveRandomObj();
     }
     float valueScore;
-    float range = 300f;
+    float range = 200f;
     void RangeRandom()
     {
         valueScore = (int)score._score / 2;
@@ -63,7 +63,7 @@ public class RandomObjRoad : MonoBehaviour
         if (valueScore >= range && numderRandom < 7)
         {
             numderRandom++;
-            range += 300f;
+            range += 200f;
         }
 
     }

@@ -8,7 +8,7 @@ public class CoinHelper : MonoBehaviour
     static int money;
     void Start()
     {
-
+        money = Setting.moneyValue;
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class CoinHelper : MonoBehaviour
     {
         money++;
         Setting.moneyValue = money;
-
+        PlayerPrefs.SetInt("moneyValue", Setting.moneyValue);
         //gameObject.GetComponent<MeshRenderer>().enabled = false;
         Destroy(gameObject);
 

@@ -24,6 +24,12 @@ public class ShopUIHelper : MonoBehaviour
         player.GetComponent<Renderer>().material = materialArray[index];
         textPrice.text = PriceArray[index].ToString();
         Setting.PlayerMaterial = materialArray[0];
+
+        for (int i = 0; i < materialArray.Length; i++)
+        {
+            if (materialArray[PlayerPrefs.GetInt("indexPlayerMaterial" + i)] != null)
+                Setting.BoughtMaterialsPlayer.Add(materialArray[PlayerPrefs.GetInt("indexPlayerMaterial" + i)]);
+        }
     }
 
     private void Start()
@@ -45,7 +51,7 @@ public class ShopUIHelper : MonoBehaviour
         if (CheckIsBuySkinPlayer[index] && !_isActiveCoroutine)
         {
             Setting.PlayerMaterial = player.GetComponent<Renderer>().material;
-            textPrice.text = " Sold ";
+            textPrice.text = "Куплено";
             textPrice.color = new Color(0.728907f, 0.7825828f, 0.7924528f, 1f);
         }
         else if(!_isActiveCoroutine)
@@ -97,7 +103,7 @@ public class ShopUIHelper : MonoBehaviour
             textPrice.text = PriceArray[index].ToString();
         else
         {
-            textPrice.text = " Sold ";
+            textPrice.text = "Куплено";
         }
 
         anim.SetBool("newMaterial", false);
@@ -128,6 +134,7 @@ public class ShopUIHelper : MonoBehaviour
             Setting.BoughtMaterialsPlayer.Add(materialArray[index]);
             CheckIsBuySkinPlayer[index] = true;
             textPrice.text = " Sold ";
+            PlayerPrefs.SetInt("indexPlayerMaterial" + index, index);
         }
         else
         {

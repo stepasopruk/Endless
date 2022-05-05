@@ -23,5 +23,6 @@ public class UISettingValueHelper : MonoBehaviour
     {
         textMoney.text = Setting.moneyValue.ToString();
         Setting.soundValue = sliderSound.value;
+        PlayerPrefs.SetFloat("soundValue", Setting.soundValue);
     }
 }
