@@ -18,7 +18,7 @@ public class ButtonUI : MonoBehaviour
 
 
     float valueScore;
-    float range = 300f;
+    float range = 200f;
     int index = 0;
     private void FixedUpdate()
     {
@@ -29,7 +29,7 @@ public class ButtonUI : MonoBehaviour
             button[index].GetComponent<Button>().enabled = true;
             button[index].GetComponent<Image>().color = new Color(255, 255, 255, 255);
             index++;
-            range += 300f;
+            range += 200f;
         }
 
     }
