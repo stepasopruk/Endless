@@ -17,8 +17,12 @@ public class ShopUIHelper : MonoBehaviour
 
     Animator anim;
 
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClipBuy;
+
     private void Awake()
     {
+        _audioSource = GetComponent<AudioSource>();
         index = Setting.indexPlayerMaterial;
         anim = player.GetComponent<Animator>();
         player.GetComponent<Renderer>().material = materialArray[index];
@@ -135,6 +139,7 @@ public class ShopUIHelper : MonoBehaviour
             CheckIsBuySkinPlayer[index] = true;
             textPrice.text = " Sold ";
             PlayerPrefs.SetInt("indexPlayerMaterial" + index, index);
+            _audioSource.PlayOneShot(_audioClipBuy);
         }
         else
         {

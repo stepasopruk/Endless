@@ -8,13 +8,15 @@ public class PlayerController : MonoBehaviour
     Vector3 targetPos;
     float laneOffset = 1f;
     float laneChangeSpeed = 15;
+    private AudioSource _audioSource;
+    [SerializeField] private AudioClip _audioClipCoinSelection;
 
 
     void Start()
     {
         targetPos = transform.position;
         SwipeDetection.instance.MoveEvent += MovePlayer;
-
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void MovePlayer(bool[] swipes)
@@ -40,6 +42,7 @@ public class PlayerController : MonoBehaviour
         if (other.GetComponent<CoinHelper>())
         {
             other.GetComponent<CoinHelper>().Enrol();
+            _audioSource.PlayOneShot(_audioClipCoinSelection);
         }
         else
         {
