@@ -29,13 +29,25 @@ public class PlayerController : MonoBehaviour
         {
             targetPos = new Vector3(targetPos.x + laneOffset, transform.position.y, transform.position.z);
         }
+    }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            targetPos = new Vector3(targetPos.x - laneOffset, transform.position.y, transform.position.z);
+            Debug.Log("LeftArrow");
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            targetPos = new Vector3(targetPos.x + laneOffset, transform.position.y, transform.position.z);
+            Debug.Log("RightArrow");
+        }
     }
 
     private void FixedUpdate()
     {
         transform.position = Vector3.MoveTowards(transform.position, targetPos, laneChangeSpeed * Time.deltaTime);
-
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     private PlayerController _playerController;
 
+    //private void Awake()
+    //{
+    //    InterstitialAds.S.LoadAds();
+    //}
     private void Start()
     {
         Time.timeScale = 1;

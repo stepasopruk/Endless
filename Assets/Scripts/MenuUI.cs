@@ -9,6 +9,9 @@ public class MenuUI : MonoBehaviour
     [SerializeField] GameObject image_pause;
     [SerializeField] GameObject image_loss;
 
+    [SerializeField] InterstitialAds _interstitialAds;
+    [SerializeField] RewardedAds _rewardedAds;
+
     public void ButtonPause()
     {
         Time.timeScale = 0;
@@ -48,7 +51,7 @@ public class MenuUI : MonoBehaviour
     public void ButtonAdvertisement()
     {
         Debug.Log("продолжение");
+        _rewardedAds.ShowAds();
         image_loss.SetActive(false);
-        Time.timeScale = 1;
     }
 }
